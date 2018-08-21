@@ -35,7 +35,7 @@ CACHES = {
     },
 }
 
-CORS_ORIGIN_WHITELIST = ['app.mysite.com']
-CSRF_TRUSTED_ORIGINS = ['api.mysite.com']
+CORS_ORIGIN_WHITELIST = ['app.SITE_URL']
+CSRF_TRUSTED_ORIGINS = ['api.SITE_URL']
 
 ALLOWED_HOSTS = ['*']

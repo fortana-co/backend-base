@@ -84,6 +84,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     with open(args.password_file, 'r') as file:
         password = file.readline().strip()
+    if not password:
+        raise RuntimeError('vault password must not be blank')
     key = hashlib.sha256(password.encode('utf-8')).digest()
 
     if args.encrypt:

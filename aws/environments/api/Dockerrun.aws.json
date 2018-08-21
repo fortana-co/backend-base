@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "api",
-      "image": "306439459454.dkr.ecr.us-west-2.amazonaws.com/backend_base",
+      "image": "<AWS_ECR_URL>/backend_base",
       "command": [
         "./api.prod.sh"
       ],
@@ -18,7 +18,7 @@
     },
     {
       "name": "celery_flower",
-      "image": "306439459454.dkr.ecr.us-west-2.amazonaws.com/backend_base",
+      "image": "<AWS_ECR_URL>/backend_base",
       "command": [
         "./celery_flower.prod.sh"
       ],
@@ -33,7 +33,7 @@
     },
     {
       "name": "celery_worker",
-      "image": "306439459454.dkr.ecr.us-west-2.amazonaws.com/backend_base",
+      "image": "<AWS_ECR_URL>/backend_base",
       "command": [
         "./celery_worker.sh"
       ],
@@ -42,7 +42,7 @@
     },
     {
       "name": "nginx",
-      "image": "306439459454.dkr.ecr.us-west-2.amazonaws.com/nginx",
+      "image": "<AWS_ECR_URL>/nginx",
       "essential": true,
       "memory": 400,
       "portMappings": [

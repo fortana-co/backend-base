@@ -16,6 +16,9 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     # project apps
+    'db.users',
+    'db.main',
+    'helpers',
     'jobs',
     'api',
 
@@ -24,6 +27,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'flower',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -36,6 +40,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'users.StaffUser'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -80,3 +86,4 @@ CORS_ALLOW_METHODS = ('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS')
 # settings for dependencies (keep at the end of file)
 from config.settings.dependencies.celery import *
 from config.settings.dependencies.rest_framework import *
+from config.settings.dependencies.drf_yasg import *
