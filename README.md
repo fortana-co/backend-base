@@ -182,3 +182,8 @@ Mypy cheat sheet: <http://mypy.readthedocs.io/en/latest/cheat_sheet_py3.html>.
 
 - `mypy src`
 - `mypy src --check-untyped-defs`
+
+
+## Performance Research
+- <http://jrwren.wrenfam.com/blog/2016/02/16/optimizing-uwsgi-for-many-many-threads-and-processes/index.html>
+- <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-links.html>
