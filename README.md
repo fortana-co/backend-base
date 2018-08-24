@@ -5,13 +5,15 @@ Django Rest Framework, Celery, Redis and PostgreSQL, with sensible defaults, run
 ## Dev
 We use [Docker](https://docs.docker.com/docker-for-mac/) and `docker-compose` in development to package and deploy our application.
 
-To decrypt env vars in `env.dev` and run dev, execute `./dev.sh`. To see which containers are running, run `docker-compose ps`. To stop all containers, run `docker-compose stop`.
+To decrypt env vars in `env.dev` and run dev, execute `./dev.sh`. To see which containers are running, run `docker ps`. To stop all containers, run `docker-compose stop`.
 
 To blow containers away and build them from scratch, use `docker-compose rm` then `./dev.sh`.
 
 
 ### Prerequisites
-Run commands in `citext.sql` in database.
+SSH into DB docker container, `docker exec -it db /bin/bash`, then run `psql -U postgres` to log into DB. Run commands in `citext.sql`.
+
+SSH into API container, `docker exec -it api /bin/ash`. Source env vars by running `source .env`. Then create and run initial migrations.
 
 ~~~sh
 python manage.py makemigrations users main
@@ -35,6 +37,10 @@ Then restart the db container, `docker-compose restart db`. Tail logs like this:
 ~~~sh
 less +F dbdata/pg_log/`ls -1 dbdata/pg_log/ | tail -1`
 ~~~
+
+__API__: `docker-compose logs -f api`.
+
+__Celery__: Go to <http://localhost:5555/tasks>, log in with `(CUSTOM_FLOWER_USERNAME, CUSTOM_FLOWER_PASSWORD)`.
 
 
 ## Deploy
@@ -182,8 +188,3 @@ Mypy cheat sheet: <http://mypy.readthedocs.io/en/latest/cheat_sheet_py3.html>.
 
 - `mypy src`
 - `mypy src --check-untyped-defs`
-
-
-## Performance Research
-- <http://jrwren.wrenfam.com/blog/2016/02/16/optimizing-uwsgi-for-many-many-threads-and-processes/index.html>
-- <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-links.html>

@@ -10,7 +10,7 @@ def send_email(
     to: List[str],
     subject: str,
     body: str,
-    source: str = 'Brigada <contacto@brigada.mx>',
+    source: str = 'Notifications <email@address.com>',
     reply_to: List[str] = None,
     **kwargs,
 ):

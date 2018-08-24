@@ -12,7 +12,7 @@ from jobs.messages import send_email
 
 class UserManager(BaseUserManager):
     def create_user(self, email, **kwargs):
-        """Creates and saves a generic user with the given email, first_name, surname
+        """Creates and saves a generic user with the given email, first_name, surnames
         and password.
         """
         if not email:
@@ -21,7 +21,7 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
             first_name=kwargs.pop('first_name', ''),
-            surname=kwargs.pop('surname', ''),
+            surnames=kwargs.pop('surnames', ''),
             **kwargs,
         )
 

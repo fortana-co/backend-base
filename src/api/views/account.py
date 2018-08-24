@@ -60,7 +60,7 @@ class AccountToken(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         token, created = UserToken.objects.get_or_create(user=user)
-        return Response({'token': token.key, 'id': user.pk, 'organization_id': user.organization.id})
+        return Response({'token': token.key, 'id': user.pk})
 
 
 class AccountDeleteToken(APIView):
@@ -79,7 +79,7 @@ class AccountDeleteToken(APIView):
 
 
 class AccountSetPassword(APIView):
-    """Set org user's password. Requires passing old password for security.
+    """Set user's password. Requires passing old password for security.
     """
     authentication_classes = (UserAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
